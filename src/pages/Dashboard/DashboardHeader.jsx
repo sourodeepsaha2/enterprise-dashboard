@@ -10,7 +10,7 @@ const DashboardHeader = () => {
 
   return (
     <PageTitle
-      title="Good Morning, Sourodeep 👋"
+      title="Good Morning, Sourodeep"
       subtitle={`Welcome back. Here's what's happening today • ${today}`}
     />
   );
