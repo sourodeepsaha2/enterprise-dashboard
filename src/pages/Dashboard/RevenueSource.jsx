@@ -1,19 +1,20 @@
-import { Typography } from "@mui/material";
 import SectionCard from "../../components/ui/SectionCard";
+
+import DonutChart from "./DonutChart";
+import SourceList from "./SourceList";
 
 const RevenueSource = () => {
   return (
     <SectionCard
       sx={{
-        height: 380,
+        height: 640,
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <Typography
-        variant="h6"
-        fontWeight={600}
-      >
-        Revenue Sources
-      </Typography>
+      <DonutChart />
+
+      <SourceList />
     </SectionCard>
   );
 };

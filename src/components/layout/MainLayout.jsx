@@ -1,6 +1,12 @@
 import { Box } from "@mui/material";
+
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+
+import {
+  HEADER_HEIGHT,
+  HEADER_HEIGHT_PX,
+} from "../../utils/layout";
 
 const MainLayout = ({ children }) => {
   return (
@@ -8,6 +14,7 @@ const MainLayout = ({ children }) => {
       sx={{
         minHeight: "100vh",
         bgcolor: "background.default",
+        pt: HEADER_HEIGHT_PX,
       }}
     >
       <Header />
@@ -15,7 +22,7 @@ const MainLayout = ({ children }) => {
       <Box
         sx={{
           display: "flex",
-          height: "calc(100vh - 80px)",
+          height: `calc(100vh - ${HEADER_HEIGHT}px)`,
         }}
       >
         <Sidebar />

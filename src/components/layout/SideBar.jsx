@@ -14,6 +14,11 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
+import {
+  HEADER_HEIGHT,
+  SIDEBAR_WIDTH,
+} from "../../utils/layout";
+
 const menuItems = [
   {
     title: "Dashboard",
@@ -42,12 +47,22 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        width: 240,
+        width: SIDEBAR_WIDTH,
+        height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+
+        position: "sticky",
+        top: 0,
+
+        flexShrink: 0,
+
         bgcolor: "#111111",
+
         borderRight: "1px solid #2A2A2A",
+
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+
         py: 3,
       }}
     >
@@ -71,14 +86,12 @@ const Sidebar = () => {
               key={item.title}
               sx={{
                 mb: 1,
-                borderRadius: 2.5,
-                py: 1.4,
+                py: 1.5,
+                borderRadius: 3,
 
                 bgcolor: item.active ? "#FFFFFF" : "transparent",
 
                 color: item.active ? "#000000" : "#B3B3B3",
-
-                transition: "all .25s",
 
                 "&:hover": {
                   bgcolor: item.active ? "#FFFFFF" : "#1C1C1C",
@@ -87,8 +100,8 @@ const Sidebar = () => {
             >
               <ListItemIcon
                 sx={{
-                  color: item.active ? "#000000" : "#B3B3B3",
                   minWidth: 42,
+                  color: item.active ? "#000000" : "#B3B3B3",
                 }}
               >
                 {item.icon}
@@ -122,8 +135,8 @@ const Sidebar = () => {
         <List sx={{ px: 2 }}>
           <ListItemButton
             sx={{
-              borderRadius: 2.5,
-              py: 1.4,
+              py: 1.5,
+              borderRadius: 3,
 
               color: "#B3B3B3",
 
@@ -134,8 +147,8 @@ const Sidebar = () => {
           >
             <ListItemIcon
               sx={{
-                color: "#B3B3B3",
                 minWidth: 42,
+                color: "#B3B3B3",
               }}
             >
               <SettingsOutlinedIcon />
@@ -145,7 +158,6 @@ const Sidebar = () => {
               primary="Settings"
               primaryTypographyProps={{
                 fontSize: 15,
-                fontWeight: 500,
               }}
             />
           </ListItemButton>
@@ -155,9 +167,8 @@ const Sidebar = () => {
       <Typography
         sx={{
           textAlign: "center",
-          color: "#666",
+          color: "#666666",
           fontSize: 13,
-          pb: 1,
         }}
       >
         Enterprise v1.0

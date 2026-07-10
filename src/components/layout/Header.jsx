@@ -1,127 +1,114 @@
 import {
   AppBar,
-  Avatar,
-  Box,
-  IconButton,
-  InputBase,
   Toolbar,
-  Typography,
+  Box,
+  TextField,
+  InputAdornment,
+  IconButton,
+  Avatar,
 } from "@mui/material";
 
-import SearchIcon from "@mui/icons-material/Search";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+
+import Logo from "../common/Logo";
 
 const Header = () => {
   return (
     <AppBar
-      position="static"
+      position="fixed"
       elevation={0}
       sx={{
         bgcolor: "#111111",
         borderBottom: "1px solid #2A2A2A",
+        zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
       <Toolbar
         sx={{
-          height: 80,
-          display: "flex",
           justifyContent: "space-between",
+          px: 3,
+          height: 90,
         }}
       >
         {/* Logo */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            gap: 2,
-          }}
-        >
-          <Box
-            sx={{
-              width: 42,
-              height: 42,
-              bgcolor: "#FFFFFF",
-              borderRadius: 2,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Typography
-              sx={{
-                color: "#000000",
-                fontWeight: 800,
-                fontSize: 20,
-              }}
-            >
-              E
-            </Typography>
-          </Box>
-
-          <Typography
-            variant="h5"
-            sx={{
-              fontWeight: 700,
-              letterSpacing: "-0.5px",
-            }}
-          >
-            Enterprise
-          </Typography>
-        </Box>
+        <Logo />
 
         {/* Search */}
         <Box
           sx={{
-            width: 320,
-            height: 44,
-            bgcolor: "#181818",
-            border: "1px solid #2A2A2A",
-            borderRadius: 2,
-            display: "flex",
-            alignItems: "center",
-            px: 2,
+            width: 420,
           }}
         >
-          <SearchIcon
-            sx={{
-              color: "#808080",
-              mr: 1,
+          <TextField
+            fullWidth
+            placeholder="Search customers, orders..."
+            variant="outlined"
+            size="small"
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchRoundedIcon sx={{ color: "#8A8A8A" }} />
+                  </InputAdornment>
+                ),
+              },
             }}
-          />
-
-          <InputBase
-            placeholder="Search..."
             sx={{
-              flex: 1,
-              color: "#FFFFFF",
+              "& .MuiOutlinedInput-root": {
+                bgcolor: "#181818",
+                borderRadius: 10,
+                color: "#FFFFFF",
+
+                "& fieldset": {
+                  borderColor: "#2A2A2A",
+                },
+
+                "&:hover fieldset": {
+                  borderColor: "#444444",
+                },
+
+                "&.Mui-focused fieldset": {
+                  borderColor: "#FFFFFF",
+                },
+              },
             }}
           />
         </Box>
 
-        {/* Right */}
+        {/* Actions */}
         <Box
           sx={{
             display: "flex",
             alignItems: "center",
-            gap: 2,
+            gap: 1,
           }}
         >
-          <IconButton sx={{ color: "#FFFFFF" }}>
-            <NotificationsNoneOutlinedIcon />
+          <IconButton
+            sx={{
+              color: "#FFFFFF",
+            }}
+          >
+            <NotificationsNoneRoundedIcon />
           </IconButton>
 
-          <IconButton sx={{ color: "#FFFFFF" }}>
+          <IconButton
+            sx={{
+              color: "#FFFFFF",
+            }}
+          >
             <SettingsOutlinedIcon />
           </IconButton>
 
           <Avatar
             sx={{
-              width: 40,
-              height: 40,
+              width: 46,
+              height: 46,
               bgcolor: "#FFFFFF",
               color: "#000000",
               fontWeight: 700,
+              ml: 1,
             }}
           >
             S
