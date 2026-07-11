@@ -14,6 +14,8 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 
+import { NavLink } from "react-router-dom";
+
 import {
   HEADER_HEIGHT,
   SIDEBAR_WIDTH,
@@ -23,23 +25,27 @@ const menuItems = [
   {
     title: "Dashboard",
     icon: <DashboardOutlinedIcon />,
-    active: true,
+    path: "/",
   },
   {
     title: "Analytics",
     icon: <QueryStatsOutlinedIcon />,
+    path: "/analytics",
   },
   {
     title: "Customers",
     icon: <GroupOutlinedIcon />,
+    path: "/customers",
   },
   {
     title: "Products",
     icon: <Inventory2OutlinedIcon />,
+    path: "/products",
   },
   {
     title: "Orders",
     icon: <ShoppingCartOutlinedIcon />,
+    path: "/orders",
   },
 ];
 
@@ -49,21 +55,13 @@ const Sidebar = () => {
       sx={{
         width: SIDEBAR_WIDTH,
         height: `calc(100vh - ${HEADER_HEIGHT}px)`,
-
-        position: "sticky",
-        top: 0,
-
-        flexShrink: 0,
-
         bgcolor: "#111111",
-
         borderRight: "1px solid #2A2A2A",
-
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-
         py: 3,
+        flexShrink: 0,
       }}
     >
       <Box>
@@ -84,24 +82,38 @@ const Sidebar = () => {
           {menuItems.map((item) => (
             <ListItemButton
               key={item.title}
+              component={NavLink}
+              to={item.path}
+              end={item.path === "/"}
               sx={{
                 mb: 1,
                 py: 1.5,
                 borderRadius: 3,
 
-                bgcolor: item.active ? "#FFFFFF" : "transparent",
+                color: "#B3B3B3",
 
-                color: item.active ? "#000000" : "#B3B3B3",
+                "&.active": {
+                  bgcolor: "#F5F5F5",
+                  color: "#000000",
+                },
+
+                "&.active .MuiListItemIcon-root": {
+                  color: "#000000",
+                },
 
                 "&:hover": {
-                  bgcolor: item.active ? "#FFFFFF" : "#1C1C1C",
+                  bgcolor: "#1C1C1C",
+                },
+
+                "&.active:hover": {
+                  bgcolor: "#F5F5F5",
                 },
               }}
             >
               <ListItemIcon
                 sx={{
                   minWidth: 42,
-                  color: item.active ? "#000000" : "#B3B3B3",
+                  color: "inherit",
                 }}
               >
                 {item.icon}
@@ -111,7 +123,7 @@ const Sidebar = () => {
                 primary={item.title}
                 primaryTypographyProps={{
                   fontSize: 15,
-                  fontWeight: item.active ? 600 : 500,
+                  fontWeight: 500,
                 }}
               />
             </ListItemButton>
@@ -134,11 +146,21 @@ const Sidebar = () => {
 
         <List sx={{ px: 2 }}>
           <ListItemButton
+            component={NavLink}
+            to="/settings"
             sx={{
               py: 1.5,
               borderRadius: 3,
-
               color: "#B3B3B3",
+
+              "&.active": {
+                bgcolor: "#F5F5F5",
+                color: "#000000",
+              },
+
+              "&.active .MuiListItemIcon-root": {
+                color: "#000000",
+              },
 
               "&:hover": {
                 bgcolor: "#1C1C1C",
@@ -148,18 +170,13 @@ const Sidebar = () => {
             <ListItemIcon
               sx={{
                 minWidth: 42,
-                color: "#B3B3B3",
+                color: "inherit",
               }}
             >
               <SettingsOutlinedIcon />
             </ListItemIcon>
 
-            <ListItemText
-              primary="Settings"
-              primaryTypographyProps={{
-                fontSize: 15,
-              }}
-            />
+            <ListItemText primary="Settings" />
           </ListItemButton>
         </List>
       </Box>

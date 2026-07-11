@@ -22,7 +22,7 @@ const MainLayout = ({ children }) => {
       <Box
         sx={{
           display: "flex",
-          height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+          minHeight: `calc(100vh - ${HEADER_HEIGHT}px)`,
         }}
       >
         <Sidebar />
@@ -31,6 +31,7 @@ const MainLayout = ({ children }) => {
           component="main"
           sx={{
             flex: 1,
+            minWidth: 0,
             px: 5,
             py: 4,
             overflowY: "auto",

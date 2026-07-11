@@ -22,8 +22,8 @@ const Header = () => {
       sx={{
         bgcolor: "#111111",
         borderBottom: "1px solid #2A2A2A",
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-      }}
+        zIndex: (theme) => theme.zIndex.appBar,     
+       }}
     >
       <Toolbar
         sx={{
