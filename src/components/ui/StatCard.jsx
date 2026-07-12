@@ -50,38 +50,40 @@ const StatCard = ({
         {title}
       </Typography>
 
-      <Chip
-        className="trend-chip"
-        size="small"
-        icon={
-          positive ? (
-            <TrendingUpRoundedIcon />
-          ) : (
-            <TrendingDownRoundedIcon />
-          )
-        }
-        label={change}
-        sx={{
-          mb: 2,
+      {change && (
+        <Chip
+          className="trend-chip"
+          size="small"
+          icon={
+            positive ? (
+              <TrendingUpRoundedIcon />
+            ) : (
+              <TrendingDownRoundedIcon />
+            )
+          }
+          label={change}
+          sx={{
+            mb: 2,
 
-          bgcolor: positive
-            ? "rgba(34,197,94,0.12)"
-            : "rgba(239,68,68,0.12)",
+            bgcolor: positive
+              ? "rgba(34,197,94,0.12)"
+              : "rgba(239,68,68,0.12)",
 
-          color: positive ? "#22C55E" : "#EF4444",
-
-          transition: "transform .25s ease",
-
-          "& .MuiChip-label": {
-            fontWeight: 600,
-          },
-
-          "& .MuiChip-icon": {
             color: positive ? "#22C55E" : "#EF4444",
+
             transition: "transform .25s ease",
-          },
-        }}
-      />
+
+            "& .MuiChip-label": {
+              fontWeight: 600,
+            },
+
+            "& .MuiChip-icon": {
+              color: positive ? "#22C55E" : "#EF4444",
+              transition: "transform .25s ease",
+            },
+          }}
+        />
+      )}
 
       <Typography
         className="stat-value"

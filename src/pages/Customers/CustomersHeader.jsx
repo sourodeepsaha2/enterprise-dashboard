@@ -9,7 +9,7 @@ import {
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
-const CustomersHeader = () => {
+const CustomersHeader = ({ searchQuery, onSearchChange }) => {
   return (
     <Box sx={{ mb: 4 }}>
       <Typography
@@ -42,6 +42,8 @@ const CustomersHeader = () => {
       >
         <TextField
           placeholder="Search customers..."
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
           sx={{
             width: {
               xs: "100%",
